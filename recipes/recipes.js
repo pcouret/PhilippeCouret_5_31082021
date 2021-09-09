@@ -1734,7 +1734,7 @@ const recipes = [
                   </h2>
                   <h2 class="recipe__titleTime__time">
                     <img
-                      src="images/icon/clock-circle.svg"
+                      src="img/clock-circle.svg"
                       alt="icone temps"
                       class="icon recipe__titleTime__time--icon"
                     />
