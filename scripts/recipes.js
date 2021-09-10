@@ -1723,47 +1723,4 @@ const recipes = [
     },
 ];
 
-  const container = document.getElementById("recipes-list");
-  for (let i=0;i<recipes.length;i++){
-    const card = `            <li id="${recipes[i].id}" class="recipe-block">
-              <div class="recipe-block__img"></div>
-              <div class="recipe">
-                <div class="recipe__titleTime">
-                  <h2 class="recipe__titleTime__title name">
-                    ${recipes[i].name}
-                  </h2>
-                  <h2 class="recipe__titleTime__time">
-                    <img
-                      src="img/clock-circle.svg"
-                      alt="icone temps"
-                      class="icon recipe__titleTime__time--icon"
-                    />
-                    ${recipes[i].time} min
-                  </h2>
-                </div>
-                <div class="ingredients-description">
-                  <div class="Ingredients">
-                    <ul class="ingredients-list">
-                      ${getIngredients(recipes[i].ingredients)}
-                    </ul>
-                  </div>
-                  <div class="description">
-                    <p class="description__text">
-                      ${recipes[i].description.length<70? recipes[i].description: recipes[i].description.substring(0,70)+"..."}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </li>`
-
-            container.innerHTML += card
-  }
-          function getIngredients(ingredientsList){
-            let ingredientLi= ""
-          ingredientsList.forEach(element => {
-            ingredientLi+=`   <li class="ingredient">
-                        ${element.ingredient}: <span class="ingredient__quantity">${element.quantite ?element.quantite : element.quantity?element.quantity: ""} ${element.unit?element.unit: ""}</span>
-                      </li>`
-          });
-          return ingredientLi;
-          }
+  
