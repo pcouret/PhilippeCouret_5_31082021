@@ -1,5 +1,5 @@
 const container = document.getElementById("recipes-list");
-  for (let i=0;i<recipes.length;i++){
+for (let i = 0; i < recipes.length; i++) {
     const card = `            <li id="${recipes[i].id}" class="recipe-block">
               <div class="recipe-block__img"></div>
               <div class="recipe">
@@ -24,62 +24,87 @@ const container = document.getElementById("recipes-list");
                   </div>
                   <div class="description">
                     <p class="description__text">
-                      ${recipes[i].description.length<70? recipes[i].description: recipes[i].description.substring(0,70)+"..."}
+                      ${recipes[i].description.length < 70 ? recipes[i].description : recipes[i].description.substring(0, 70) + "..."}
                     </p>
                   </div>
                 </div>
               </div>
             </li>`
 
-            container.innerHTML += card
-  }
-          function getIngredients(ingredientsList){
-            let ingredientLi= ""
-          ingredientsList.forEach(element => {
-            ingredientLi+=`   <li class="ingredient">
-                        ${element.ingredient}: <span class="ingredient__quantity">${element.quantite ?element.quantite : element.quantity?element.quantity: ""} ${element.unit?element.unit: ""}</span>
+    container.innerHTML += card
+}
+function getIngredients(ingredientsList) {
+    let ingredientLi = ""
+    ingredientsList.forEach(element => {
+        ingredientLi += `   <li class="ingredient">
+                        ${element.ingredient}: <span class="ingredient__quantity">${element.quantite ? element.quantite : element.quantity ? element.quantity : ""} ${element.unit ? element.unit : ""}</span>
                       </li>`
-          });
-          return ingredientLi;
-          }
+    });
+    return ingredientLi;
+}
 
-          
-          function createFilterList(filterList , filterType){
-            let filterLi= ""
-            if (filterType === "ingredient"){
-                filterList.forEach(oneFilterElement => {
-                    filterLi+=`   <li class=${filterType}>
+
+function createFilterList(filterList, filterType) {
+    let filterLi = ""
+    if (filterType === "ingredient") {
+        filterList.forEach(oneFilterElement => {
+            filterLi += `   <li class=${filterType}>
                                 ${oneFilterElement[filterType]}
                               </li>`
-                  });
-            }else if (filterType === "ustensil"){
-                filterList.forEach(oneFilterElement => {
-                    filterLi+=`   <li class=${filterType}>
+        });
+    } else if (filterType === "ustensil") {
+        filterList.forEach(oneFilterElement => {
+            filterLi += `   <li class=${filterType}>
                                 ${oneFilterElement}
                               </li>`
-                  });
-            }else if (filterType === "appliance"){
-                    filterLi+=`   <li class=${filterType}>
+        });
+    } else if (filterType === "appliance") {
+        filterLi += `   <li class=${filterType}>
                                 ${filterList}
                               </li>`
-                  
+
+    }
+    return filterLi;
+}
+
+let ingredientsList = document.getElementById("ingredient-list")
+let ustensilsList = document.getElementById("ustensile-list")
+let apliancesList = document.getElementById("appliance-list")
+let ingredientsListDom = ""
+let ustensilsListDom = ""
+let apliancesListDom = ""
+
+
+recipes.forEach(oneRecipe => {
+    ingredientsListDom += createFilterList(oneRecipe.ingredients, "ingredient")
+    ustensilsListDom += createFilterList(oneRecipe.ustensils, "ustensil")
+    apliancesListDom += createFilterList(oneRecipe.appliance, "appliance")
+});
+ingredientsList.innerHTML = ingredientsListDom
+ustensilsList.innerHTML = ustensilsListDom
+apliancesList.innerHTML = apliancesListDom
+
+
+const containerSearch = document.getElementById("ingr-search-list");
+const ingredientsArray = searchIngredients(recipes);
+ingredientsArray.forEach(ingredient =>{
+    containerSearch.innerHTML += `<li>${ingredient}<li>`;
+})
+
+
+function searchIngredients(ingredientsSearchList) {
+    let tabIngr = [];
+    ingredientsSearchList.forEach(_recipe => {
+        recipe.ingredients.forEach(ingredient => {
+            const index = tabIngr.findIndex(i => Utils.normScripture(i)=== Utils.normScripture(ingredient.ingredient))
+            if (index === -1){
+                tabIngr.push(ingredient.ingredient)
             }
-          return filterLi;
-          }
-
-        let ingredientsList = document.getElementById("ingredient-list")
-        let ustensilsList = document.getElementById("ustensile-list")
-        let apliancesList = document.getElementById("appliance-list")
-        let ingredientsListDom = ""
-        let ustensilsListDom = ""
-        let apliancesListDom = ""
-
-
-        recipes.forEach(oneRecipe => {
-            ingredientsListDom += createFilterList(oneRecipe.ingredients, "ingredient")
-            ustensilsListDom += createFilterList(oneRecipe.ustensils, "ustensil")
-            apliancesListDom += createFilterList(oneRecipe.appliance, "appliance")
-        });
-        ingredientsList.innerHTML = ingredientsListDom
-        ustensilsList.innerHTML = ustensilsListDom
-        apliancesList.innerHTML = apliancesListDom
+        })
+        // const ingredients = _recipes.ingredients.map(i =>) i.ingredient)
+        // tabIngr = [...tabIngr, ...ingredients]
+    })
+    console.log(tabIngr)
+    tabIngr.sort();
+    return tabIngr;
+};

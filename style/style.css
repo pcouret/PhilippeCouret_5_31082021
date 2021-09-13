@@ -8,7 +8,6 @@ body {
 
 #bloc-page {
   margin: 100px;
-  width: 1440px;
 }
 
 h1 {
@@ -268,15 +267,3 @@ h2 {
   margin: 0;
 }
 /*# sourceMappingURL=style.css.map */
-
-#ustensile-list {
-  display: none;
-}
-
-#appliance-list {
-  display: none;
-}
-
-#ingredient-list {
-  display: none;
-}
