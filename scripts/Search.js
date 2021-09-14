@@ -33,6 +33,16 @@ for (let i = 0; i < recipes.length; i++) {
 
     container.innerHTML += card
 }
+
+let tabIngredients = getAllIngr();
+let tabSelectIngr = [];
+
+let tabAppareils = getAllApp();
+let tabSelectApp = [];
+
+let tabUstensiles = getAllUst();
+let tabSelectUst = [];
+
 function getIngredients(ingredientsList) {
     let ingredientLi = ""
     ingredientsList.forEach(element => {
@@ -108,3 +118,96 @@ function searchIngredients(ingredientsSearchList) {
     tabIngr.sort();
     return tabIngr;
 };
+
+function getAllIngr() {
+    let tabAllIngr = [];
+    recipes.forEach(recette => {
+        recette.ingredients.forEach(currentIngredient => {
+            let ingr = currentIngredient.ingredient;
+            if (!tabAllIngr.find(i=>Utils.normString(i)===Utils.normString(ingr))){
+                tabAllIngr.push(ingr.tolowerCase());
+            }
+        })
+    })
+    tabAllIngr.sort();
+    return tabAllIngr;
+}
+
+function searchAppareil(appareilsSearchList) {
+    let tabApp = [];
+    appareilsSearchList.forEach(_recipe => {
+        recette.appareils.forEach(appareil => {
+            const index = tabApp.findIndex(i => Utils.normScripture(i)=== Utils.normScripture(ingredient.ingredient))
+            if (index === -1){
+                tabApp.push(appareil.appareil)
+            }
+        })
+        
+    })
+    console.log(tabApp)
+    tabApp.sort();
+    return tabApp;
+};
+
+
+function getAllApp() {
+    let tabAllApp = [];
+    recipes.forEach(recette => {
+        recette.appareils.forEach(currentAppareil => {
+            let app = currentAppareil.appareil;
+            if (!tabAllApp.find(i=>Utils.normString(i)===Utils.normString(app))){
+                tabAllApp.push(app.tolowerCase());
+            }
+        })
+    })
+    tabAllApp.sort();
+    return tabAllApp;
+}
+
+function searchIngredients(ingredientsSearchList) {
+    let tabIngr = [];
+    ingredientsSearchList.forEach(_recipe => {
+        recipe.ingredients.forEach(ingredient => {
+            const index = tabIngr.findIndex(i => Utils.normScripture(i)=== Utils.normScripture(ingredient.ingredient))
+            if (index === -1){
+                tabIngr.push(ingredient.ingredient)
+            }
+        })
+        // const ingredients = _recipes.ingredients.map(i =>) i.ingredient)
+        // tabIngr = [...tabIngr, ...ingredients]
+    })
+    console.log(tabIngr)
+    tabIngr.sort();
+    return tabIngr;
+};
+
+function getAllUst() {
+    let tabAllUst = [];
+    recipes.forEach(recette => {
+        recette.tabUstensiles.forEach(currentUstensiles => {
+            let ust = currentustensile.ustensile;
+            if (!tabAllUst.find(i=>Utils.normString(i)===Utils.normString(ust))){
+                tabAllUst.push(ust.tolowerCase());
+            }
+        })
+    })
+    tabAllUst.sort();
+    return tabAllUst;
+}
+
+
+
+function displayIngrList() {
+    loadAllIngr();
+    document.getElementById("suggIngr").style.display = "flex";
+    document.querySelector("ingrFilter .fa-chevron-up").style.display = "block";
+    document.querySelector("ingrFilter .fa-chavron-down").style.display = "none";
+}
+
+function hideIngrList() {
+    document.getElementById("suggIngr").style.display = "none";
+    document.querySelector("ingrFilter .fa-chevron-up").style.display = "none";
+    document.querySelector("ingrFilter .fa-chavron-down").style.display = "block";
+}
+
+
