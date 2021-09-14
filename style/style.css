@@ -166,6 +166,8 @@ h2 {
   padding: 0;
 }
 
+
+
 .recipe-block {
   width: 380px;
   height: 364px;
@@ -271,12 +273,16 @@ h2 {
 
 #ustensile-list {
   display: none;
+  list-style: none;
 }
 
 #appliance-list {
   display: none;
+  list-style: none;
+
 }
 
 #ingredient-list {
   display: none;
+  list-style: none;
 }
