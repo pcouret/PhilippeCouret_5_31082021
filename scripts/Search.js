@@ -225,8 +225,12 @@ function showappareilfilter(){
         document.getElementById("appliance-list").style.display = "block"
         document.getElementById("ingredient-list").style.display = "none"
         document.getElementById("ustensile-list").style.display = "none"
+        document.querySelector(".fa-chevron-up").style.display = "block";
+        document.querySelector(".fa-chevron-down").style.display = "none";
     } else {
         document.getElementById("appliance-list").style.display = "none"
+        document.querySelector(".fa-chevron-down").style.display = "block";
+        document.querySelector(".fa-chevron-up").style.display = "none";
     }
 }
 
@@ -235,8 +239,12 @@ function showustensilefilter(){
         document.getElementById("ustensile-list").style.display = "block"
         document.getElementById("ingredient-list").style.display = "none"
         document.getElementById("appliance-list").style.display = "none"
+        document.querySelector(".fa-chevron-up").style.display = "block";
+        document.querySelector(".fa-chevron-down").style.display = "none";
     } else {
         document.getElementById("ustensile-list").style.display = "none"
+        document.querySelector(".fa-chevron-down").style.display = "block";
+        document.querySelector(".fa-chevron-up").style.display = "none";
     }
 }
 
