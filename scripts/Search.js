@@ -198,19 +198,23 @@ function displayIngrList() {
     document.querySelector("ingrFilter .fa-chavron-down").style.display = "none";
 }
 
-function hideIngrList() {
-    document.getElementById("suggIngr").style.display = "none";
-    document.querySelector("ingrFilter .fa-chevron-up").style.display = "none";
-    document.querySelector("ingrFilter .fa-chavron-down").style.display = "block";
-}
+// function hideIngrList() {
+//     document.getElementById("suggIngr").style.display = "none";
+//     document.querySelector("ingrFilter .fa-chevron-up").style.display = "none";
+//     document.querySelector("ingrFilter .fa-chavron-down").style.display = "block";
+// }
 
 function showingredientfilter(){
     if (document.getElementById("ingredient-list").style.display === "none"){
         document.getElementById("ingredient-list").style.display = "block"
         document.getElementById("appliance-list").style.display = "none"
         document.getElementById("ustensile-list").style.display = "none"
+        document.querySelector(".fa-chevron-up").style.display = "block";
+        document.querySelector(".fa-chevron-down").style.display = "none";
     } else {
         document.getElementById("ingredient-list").style.display = "none"
+        document.querySelector(".fa-chevron-down").style.display = "block";
+        document.querySelector(".fa-chevron-up").style.display = "none";
     }
     
 
@@ -235,3 +239,36 @@ function showustensilefilter(){
         document.getElementById("ustensile-list").style.display = "none"
     }
 }
+
+let inputfilterIngredient = document.getElementById("search-ingredient")
+//let inputfilterIngredient = document.getElementById("search-ingredient")
+//let inputfilterIngredient = document.getElementById("search-ingredient")
+
+inputfilterIngredient.addEventListener("input", (event) => {
+    const list = document.querySelectorAll("#ingredient-list" + "> .ingredient")
+    let normalizeInputSearch = Utils.normString(event.target.value.trim())
+    let regEx = new RegExp("(" + normalizeInputSearch + ")", 'gi')
+    list.forEach((element) => {
+        if (Utils.normString(element.innerText).match(regEx) || event.target.value === ""){
+            element.style.display = 'list-item'
+        } else {
+            element.style.display = 'none'
+        }
+    })
+})
+
+// function seachFilterElement(event) {
+//     const list = document.querySelectorAll("#" + event.target.id + "> .filter")
+//     let normalizeInputSearch = Utils.normString(event.target.value.trim())
+//     let regEx = new RegExp("(" + normalizeInputSearch + ")", 'gi')
+//     list.forEach((element) => {
+//         if (Utils.normString(element.innerText).match(regEx) || event.target.value === ""){
+//             element.style.display = 'list-item'
+//         } else {
+//             element.style.display = 'none'
+//         }
+//     })
+// }
+
+// document.getElementById("search-ingredient").addEventListener("input" , seachFilterElement())
+
