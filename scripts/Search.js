@@ -204,8 +204,12 @@ function displayIngrList() {
 //     document.querySelector("ingrFilter .fa-chavron-down").style.display = "block";
 // }
 
+function isHidden(el) {
+    return (el.offsetParent === null)
+}
+
 function showingredientfilter(){
-    if (document.getElementById("ingredient-list").style.display === "none"){
+    if (isHidden(document.getElementById("ingredient-list"))){
         document.getElementById("ingredient-list").style.display = "block"
         document.getElementById("appliance-list").style.display = "none"
         document.getElementById("ustensile-list").style.display = "none"
@@ -284,6 +288,21 @@ let inputfilterAppareils = document.getElementById("search-appareil")
 
 inputfilterAppareils.addEventListener("input", (event) => {
     const list = document.querySelectorAll("#appareil-list" + "> .appareil")
+    let normalizeInputSearch = Utils.normString(event.target.value.trim())
+    let regEx = new RegExp("(" + normalizeInputSearch + ")", 'gi')
+    list.forEach((element) => {
+        if (Utils.normString(element.innerText).match(regEx) || event.target.value === ""){
+            element.style.display = 'list-item'
+        } else {
+            element.style.display = 'none'
+        }
+    })
+})
+
+let inputfilterUstensiles = document.getElementById("search-ustensile")
+
+inputfilterUstensiles.addEventListener("input", (event) => {
+    const list = document.querySelectorAll("#ustensile-list" + "> .ustensile")
     let normalizeInputSearch = Utils.normString(event.target.value.trim())
     let regEx = new RegExp("(" + normalizeInputSearch + ")", 'gi')
     list.forEach((element) => {
