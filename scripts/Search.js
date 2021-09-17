@@ -225,7 +225,7 @@ function showingredientfilter(){
 }
 
 function showappareilfilter(){
-    if (document.getElementById("appliance-list").style.display === "none"){
+    if (isHidden(document.getElementById("appliance-list"))){
         document.getElementById("appliance-list").style.display = "block"
         document.getElementById("ingredient-list").style.display = "none"
         document.getElementById("ustensile-list").style.display = "none"
@@ -239,7 +239,7 @@ function showappareilfilter(){
 }
 
 function showustensilefilter(){
-    if (document.getElementById("ustensile-list").style.display === "none"){
+    if (isHidden(document.getElementById("ustensile-list"))){
         document.getElementById("ustensile-list").style.display = "block"
         document.getElementById("ingredient-list").style.display = "none"
         document.getElementById("appliance-list").style.display = "none"
