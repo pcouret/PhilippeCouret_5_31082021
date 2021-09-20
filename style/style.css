@@ -69,7 +69,12 @@ h2 {
   font-weight: 400;
   border: 0;
   background: none;
-  position: absolute;
+}
+
+.search-text2 {
+  width: 50%;
+  background-color: auto;
+
 }
 
 #tag-area {
@@ -143,6 +148,10 @@ h2 {
 
 .btn-ingredients {
   background: #3282f7;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  width: 225px;
 }
 
 #ingredients-search {
