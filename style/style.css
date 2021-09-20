@@ -73,7 +73,8 @@ h2 {
 
 .search-text2 {
   width: 50%;
-  background-color: auto;
+  background: none;
+  border: none;
 
 }
 
@@ -144,14 +145,15 @@ h2 {
   color: #ffffff;
   border: none;
   cursor: pointer;
+  background-color: #68d9a4;
 }
 
 .btn-ingredients {
   background: #3282f7;
-  justify-content: center;
+  justify-content: space-between;
   display: flex;
   align-items: center;
-  width: 225px;
+  color: #ffffff;
 }
 
 #ingredients-search {
@@ -166,10 +168,18 @@ h2 {
 
 .btn-appliance {
   background-color: #68d9a4;
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+  color: #ffffff;
 }
 
 .btn-ustensils {
   background-color: #ed6454;
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+  color: #ffffff;
 }
 
 .icon {
