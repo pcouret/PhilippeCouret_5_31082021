@@ -69,6 +69,7 @@ h2 {
   font-weight: 400;
   border: 0;
   background: none;
+  position: absolute;
 }
 
 #tag-area {
@@ -119,6 +120,14 @@ h2 {
 .filter__text {
   font-weight: 700;
   font-family: "Lato", sans-serif;
+}
+
+
+
+
+.filters-elements {
+  margin-top: 25px;
+  margin-bottom: 15px;
 }
 
 .btn-filter {
@@ -273,10 +282,7 @@ h2 {
 
 
 
-#fa-chevron-up {
-  position: absolute;
+#fa-chevron {
+  position: relative;
 }
 
-#fa-chevron-down {
-  position: absolute;
-}
