@@ -149,12 +149,9 @@ function getAllIngr() {
 function getAllAppl() {
     let tabAllAppl = [];
     recipes.forEach(recette => {
-        recette.appliances.forEach(currentAppliance => {
-            let appl = currentAppliance.appliance;
-            if (!tabAllAppl.find(i=>Utils.normString(i)===Utils.normString(appl))){
-                 tabAllAppl.push(appl.toLowerCase());
-            }
-        })
+        if (!tabAllAppl.find(i=>Utils.normString(i)===Utils.normString(recette.appliance))){
+            tabAllAppl.push(recette.appliance.toLowerCase());
+       }
     })
     tabAllAppl.sort();
     return tabAllAppl;
@@ -166,7 +163,7 @@ function getAllUst() {
     let tabAllUst = [];
     recipes.forEach(recette => {
         recette.ustensils.forEach(currentUstensile => {
-            let ust = currentUstensile.ustensils;
+            let ust = currentUstensile;
             if (!tabAllUst.find(i=>Utils.normString(i)===Utils.normString(ust))){
                 tabAllUst.push(ust.toLowerCase());
             }
@@ -200,12 +197,12 @@ function showingredientfilter(){
         document.getElementById("ingredient-list").style.display = "block"
         document.getElementById("appliance-list").style.display = "none"
         document.getElementById("ustensile-list").style.display = "none"
-        document.querySelector(".fa-chevron-up").style.display = "block";
-        document.querySelector(".fa-chevron-down").style.display = "none";
+        document.getElementById("chevronhautingr").style.display = "block";
+        document.getElementById("chevronbasingr").style.display = "none";
     } else {
         document.getElementById("ingredient-list").style.display = "none"
-        document.querySelector(".fa-chevron-down").style.display = "block";
-        document.querySelector(".fa-chevron-up").style.display = "none";
+        document.getElementById("chevronhautingr").style.display = "none";
+        document.getElementById("chevronbasingr").style.display = "block";
     }
     
 
@@ -216,12 +213,12 @@ function showappareilfilter(){
         document.getElementById("appliance-list").style.display = "block"
         document.getElementById("ingredient-list").style.display = "none"
         document.getElementById("ustensile-list").style.display = "none"
-        document.querySelector(".fa-chevron-up").style.display = "block";
-        document.querySelector(".fa-chevron-down").style.display = "none";
+        document.getElementById("chevronhautapp").style.display = "block";
+        document.getElementById("chevronbasapp").style.display = "none";
     } else {
         document.getElementById("appliance-list").style.display = "none"
-        document.querySelector(".fa-chevron-down").style.display = "block";
-        document.querySelector(".fa-chevron-up").style.display = "none";
+        document.getElementById("chevronhautapp").style.display = "none";
+        document.getElementById("chevronbasapp").style.display = "block";
     }
 }
 
@@ -230,31 +227,31 @@ function showustensilefilter(){
         document.getElementById("ustensile-list").style.display = "block"
         document.getElementById("ingredient-list").style.display = "none"
         document.getElementById("appliance-list").style.display = "none"
-        document.querySelector(".fa-chevron-up").style.display = "block";
-        document.querySelector(".fa-chevron-down").style.display = "none";
+        document.getElementById("chevronhautust").style.display = "block";
+        document.getElementById("chevronbasust").style.display = "none";
     } else {
         document.getElementById("ustensile-list").style.display = "none"
-        document.querySelector(".fa-chevron-down").style.display = "block";
-        document.querySelector(".fa-chevron-up").style.display = "none";
+        document.getElementById("chevronhautust").style.display = "none";
+        document.getElementById("chevronbasust").style.display = "block";
     }
 }
 
-let inputfilterIngredient = document.getElementById("search-ingredient")
+// let inputfilterIngredient = document.getElementById("search-ingredient")
 //let inputfilterIngredient = document.getElementById("search-appareil")
 //let inputfilterIngredient = document.getElementById("search-ustensile")
 
-inputfilterIngredient.addEventListener("input", (event) => {
-    const list = document.querySelectorAll("#ingredient-list" + "> .ingredient")
-    let normalizeInputSearch = Utils.normString(event.target.value.trim())
-    let regEx = new RegExp("(" + normalizeInputSearch + ")", 'gi')
-    list.forEach((element) => {
-        if (Utils.normString(element.innerText).match(regEx) || event.target.value === ""){
-            element.style.display = 'list-item'
-        } else {
-            element.style.display = 'none'
-        }
-    })
-})
+// inputfilterIngredient.addEventListener("input", (event) => {
+//     const list = document.querySelectorAll("#ingredient-list" + "> .ingredient")
+//     let normalizeInputSearch = Utils.normString(event.target.value.trim())
+//     let regEx = new RegExp("(" + normalizeInputSearch + ")", 'gi')
+//     list.forEach((element) => {
+//         if (Utils.normString(element.innerText).match(regEx) || event.target.value === ""){
+//             element.style.display = 'list-item'
+//         } else {
+//             element.style.display = 'none'
+//         }
+//     })
+// })
 
 // function seachFilterElement(event) {
 //     const list = document.querySelectorAll("#" + event.target.id + "> .filter")
@@ -271,32 +268,32 @@ inputfilterIngredient.addEventListener("input", (event) => {
 
 // document.getElementById("search-ingredient").addEventListener("input" , seachFilterElement())
 
-let inputfilterAppareils = document.getElementById("search-appareil")
+// let inputfilterAppareils = document.getElementById("search-appareil")
 
-inputfilterAppareils.addEventListener("input", (event) => {
-    const list = document.querySelectorAll("#appareil-list" + "> .appareil")
-    let normalizeInputSearch = Utils.normString(event.target.value.trim())
-    let regEx = new RegExp("(" + normalizeInputSearch + ")", 'gi')
-    list.forEach((element) => {
-        if (Utils.normString(element.innerText).match(regEx) || event.target.value === ""){
-            element.style.display = 'list-item'
-        } else {
-            element.style.display = 'none'
-        }
-    })
-})
+// inputfilterAppareils.addEventListener("input", (event) => {
+//     const list = document.querySelectorAll("#appareil-list" + "> .appareil")
+//     let normalizeInputSearch = Utils.normString(event.target.value.trim())
+//     let regEx = new RegExp("(" + normalizeInputSearch + ")", 'gi')
+//     list.forEach((element) => {
+//         if (Utils.normString(element.innerText).match(regEx) || event.target.value === ""){
+//             element.style.display = 'list-item'
+//         } else {
+//             element.style.display = 'none'
+//         }
+//     })
+// })
 
-let inputfilterUstensiles = document.getElementById("search-ustensile")
+// let inputfilterUstensiles = document.getElementById("search-ustensile")
 
-inputfilterUstensiles.addEventListener("input", (event) => {
-    const list = document.querySelectorAll("#ustensile-list" + "> .ustensile")
-    let normalizeInputSearch = Utils.normString(event.target.value.trim())
-    let regEx = new RegExp("(" + normalizeInputSearch + ")", 'gi')
-    list.forEach((element) => {
-        if (Utils.normString(element.innerText).match(regEx) || event.target.value === ""){
-            element.style.display = 'list-item'
-        } else {
-            element.style.display = 'none'
-        }
-    })
-})
+// inputfilterUstensiles.addEventListener("input", (event) => {
+//     const list = document.querySelectorAll("#ustensile-list" + "> .ustensile")
+//     let normalizeInputSearch = Utils.normString(event.target.value.trim())
+//     let regEx = new RegExp("(" + normalizeInputSearch + ")", 'gi')
+//     list.forEach((element) => {
+//         if (Utils.normString(element.innerText).match(regEx) || event.target.value === ""){
+//             element.style.display = 'list-item'
+//         } else {
+//             element.style.display = 'none'
+//         }
+//     })
+// })
