@@ -213,8 +213,8 @@ function showingredientfilter(){
         document.getElementById("ingredient-list").style.display = "block"
         document.getElementById("appliance-list").style.display = "none"
         document.getElementById("ustensile-list").style.display = "none"
-        document.querySelector(".fa-chevron-up").style.display = "block";
-        document.querySelector(".fa-chevron-down").style.display = "none";
+        document.getElementById(".fa-chevron-up").style.display = "block";
+        document.getElementById(".fa-chevron-down").style.display = "none";
     } else {
         document.getElementById("ingredient-list").style.display = "none"
         document.querySelector(".fa-chevron-down").style.display = "block";
@@ -253,8 +253,8 @@ function showustensilefilter(){
 }
 
 let inputfilterIngredient = document.getElementById("search-ingredient")
-//let inputfilterIngredient = document.getElementById("search-ingredient")
-//let inputfilterIngredient = document.getElementById("search-ingredient")
+//let inputfilterIngredient = document.getElementById("search-appareil")
+//let inputfilterIngredient = document.getElementById("search-ustensile")
 
 inputfilterIngredient.addEventListener("input", (event) => {
     const list = document.querySelectorAll("#ingredient-list" + "> .ingredient")

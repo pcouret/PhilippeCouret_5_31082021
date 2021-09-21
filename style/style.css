@@ -128,7 +128,9 @@ h2 {
   font-family: "Lato", sans-serif;
 }
 
-
+#showingredientfilter {
+  color: #ffffff;
+}
 
 
 .filters-elements {
@@ -145,7 +147,7 @@ h2 {
   color: #ffffff;
   border: none;
   cursor: pointer;
-  background-color: #68d9a4;
+
 }
 
 .btn-ingredients {
@@ -297,11 +299,22 @@ h2 {
   height: 109px;
   margin: 0;
 }
+
+::placeholder {
+  color: #ffffff;
+}
+
+
+
+
 /*# sourceMappingURL=style.css.map */
 
 
 
-#fa-chevron {
+/* #fa-chevron {
   position: relative;
-}
+} */
 
+/* #textFiltres {
+  position: absolute;
+} */
