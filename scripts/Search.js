@@ -37,8 +37,8 @@ for (let i = 0; i < recipes.length; i++) {
 let tabIngredients = getAllIngr();
 let tabSelectIngr = [];
 
-let tabAppareils = getAllApp();
-let tabSelectApp = [];
+let tabAppareils = getAllAppl();
+let tabSelectAppl = [];
 
 let tabUstensiles = getAllUst();
 let tabSelectUst = [];
@@ -100,8 +100,8 @@ apliancesList.innerHTML = apliancesListDom
 
 function searchIngredients(ingredientsSearchList) {
     let tabIngr = [];
-    ingredientsSearchList.forEach(_recipe => {
-        recette.ingredients.forEach(ingredient => {
+    ingredientsSearchList.forEach(recipes => {
+        recipes.ingredients.forEach(ingredient => {
             const index = tabIngr.findIndex(i => Utils.normScripture(i)=== Utils.normScripture(ingredient.ingredient))
             if (index === -1){
                 tabIngr.push(ingredient.ingredient)
@@ -129,57 +129,44 @@ function getAllIngr() {
     return tabAllIngr;
 }
 
-function searchAppareil(appareilsSearchList) {
-    let tabApp = [];
-    appareilsSearchList.forEach(_recipe => {
-        recette.appareils.forEach(appareil => {
-            const index = tabApp.findIndex(i => Utils.normScripture(i)=== Utils.normScripture(ingredient.ingredient))
-            if (index === -1){
-                tabApp.push(appareil.appareil)
+// function searchAppareil(appareilsSearchList) {
+//     let tabApp = [];
+//     appareilsSearchList.forEach(_recipe => {
+//         recette.appareils.forEach(appareil => {
+//             const index = tabApp.findIndex(i => Utils.normScripture(i)=== Utils.normScripture(ingredient.ingredient))
+//             if (index === -1){
+//                 tabApp.push(appareil.appareil)
+//             }
+//         })
+        
+//     })
+//     console.log(tabApp)
+//     tabApp.sort();
+//     return tabApp;
+// };
+
+
+function getAllAppl() {
+    let tabAllAppl = [];
+    recipes.forEach(recette => {
+        recette.appliances.forEach(currentAppliance => {
+            let appl = currentAppliance.appliance;
+            if (!tabAllAppl.find(i=>Utils.normString(i)===Utils.normString(appl))){
+                 tabAllAppl.push(appl.toLowerCase());
             }
         })
-        
     })
-    console.log(tabApp)
-    tabApp.sort();
-    return tabApp;
-};
-
-
-function getAllApp() {
-    let tabAllApp = [];
-    recipes.forEach(recette => {
-        console.log(recette.appliance)
-        if (!tabAllApp.find(i=>Utils.normString(i)===Utils.normString(recette.appliance))){
-            tabAllApp.push(recette.appliance.toLowerCase());
-        }
-    })
-    tabAllApp.sort();
-    return tabAllApp;
+    tabAllAppl.sort();
+    return tabAllAppl;
 }
 
-function searchIngredients(ingredientsSearchList) {
-    let tabIngr = [];
-    ingredientsSearchList.forEach(recette => {
-        recette.ingredients.forEach(ingredient => {
-            const index = tabIngr.findIndex(i => Utils.normString(i)=== Utils.normString(ingredient.ingredient))
-            if (index === -1){
-                tabIngr.push(ingredient.ingredient)
-            }
-        })
-        // const ingredients = _recipes.ingredients.map(i =>) i.ingredient)
-        // tabIngr = [...tabIngr, ...ingredients]
-    })
-    console.log(tabIngr)
-    tabIngr.sort();
-    return tabIngr;
-};
+
 
 function getAllUst() {
     let tabAllUst = [];
     recipes.forEach(recette => {
         recette.ustensils.forEach(currentUstensile => {
-            let ust = currentUstensile;
+            let ust = currentUstensile.ustensils;
             if (!tabAllUst.find(i=>Utils.normString(i)===Utils.normString(ust))){
                 tabAllUst.push(ust.toLowerCase());
             }
@@ -213,8 +200,8 @@ function showingredientfilter(){
         document.getElementById("ingredient-list").style.display = "block"
         document.getElementById("appliance-list").style.display = "none"
         document.getElementById("ustensile-list").style.display = "none"
-        document.getElementById(".fa-chevron-up").style.display = "block";
-        document.getElementById(".fa-chevron-down").style.display = "none";
+        document.querySelector(".fa-chevron-up").style.display = "block";
+        document.querySelector(".fa-chevron-down").style.display = "none";
     } else {
         document.getElementById("ingredient-list").style.display = "none"
         document.querySelector(".fa-chevron-down").style.display = "block";
