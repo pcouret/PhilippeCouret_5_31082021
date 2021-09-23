@@ -72,6 +72,9 @@ h2 {
 
 .search-text2 {
   display: block;
+  border-style: none;
+  width: 100px;
+  background: unset;
 }
 
 #tag-area {
@@ -105,6 +108,10 @@ h2 {
   height: 20px;
 }
 
+.filter-elements {
+  display: none;
+}
+
 #filter-area {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -131,16 +138,44 @@ h2 {
   color: #ffffff;
   border: none;
   cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .btn-ingredients {
   background: #3282f7;
 }
 
+#ingredient-list {
+  background: #3282f7;
+  color: #ffffff;
+  width: 500px;
+  height: 500px;
+}
+
+#appliance-list {
+  background: #68d9a4;
+  color: #ffffff;
+  width: 500px;
+  height: 500px;
+}
+
+#ustensile-list {
+  background: #ed6454;
+  color: #ffffff;
+  width: 500px;
+  height: 500px;
+}
+
 #ingredients-search {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+}
+
+.search-ingredient {
+  color: none;
 }
 
 .ingredients {
@@ -160,6 +195,7 @@ h2 {
 }
 
 #recipes-list {
+  width: 1440px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -273,5 +309,21 @@ h2 {
 
 .fa-chevron-up {
   display: none;
+}
+
+::-webkit-input-placeholder {
+  color: #ffffff;
+}
+
+:-ms-input-placeholder {
+  color: #ffffff;
+}
+
+::-ms-input-placeholder {
+  color: #ffffff;
+}
+
+::placeholder {
+  color: #ffffff;
 }
 /*# sourceMappingURL=style.css.map */
