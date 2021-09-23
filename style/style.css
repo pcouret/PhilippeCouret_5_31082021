@@ -8,7 +8,6 @@ body {
 
 #bloc-page {
   margin: 100px;
-  width: 1440px;
 }
 
 h1 {
@@ -72,10 +71,7 @@ h2 {
 }
 
 .search-text2 {
-  width: 50%;
-  background: none;
-  border: none;
-
+  display: block;
 }
 
 #tag-area {
@@ -109,8 +105,6 @@ h2 {
   height: 20px;
 }
 
-
-
 #filter-area {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -128,16 +122,6 @@ h2 {
   font-family: "Lato", sans-serif;
 }
 
-#showingredientfilter {
-  color: #ffffff;
-}
-
-
-.filters-elements {
-  margin-top: 25px;
-  margin-bottom: 15px;
-}
-
 .btn-filter {
   width: 171px;
   height: 69px;
@@ -147,15 +131,10 @@ h2 {
   color: #ffffff;
   border: none;
   cursor: pointer;
-
 }
 
 .btn-ingredients {
   background: #3282f7;
-  justify-content: space-between;
-  display: flex;
-  align-items: center;
-  color: #ffffff;
 }
 
 #ingredients-search {
@@ -168,29 +147,12 @@ h2 {
   margin-right: 20px;
 }
 
-.appliance {
- list-style: none;
-}
-
-.ustensil {
-  list-style: none;
-}
-
 .btn-appliance {
   background-color: #68d9a4;
-  justify-content: space-between;
-  display: flex;
-  align-items: center;
-  color: #ffffff;
 }
-
 
 .btn-ustensils {
   background-color: #ed6454;
-  justify-content: space-between;
-  display: flex;
-  align-items: center;
-  color: #ffffff;
 }
 
 .icon {
@@ -309,21 +271,7 @@ h2 {
   margin: 0;
 }
 
-::placeholder {
-  color: #ffffff;
+.fa-chevron-up {
+  display: none;
 }
-
-
-
-
 /*# sourceMappingURL=style.css.map */
-
-
-
-/* #fa-chevron {
-  position: relative;
-} */
-
-/* #textFiltres {
-  position: absolute;
-} */

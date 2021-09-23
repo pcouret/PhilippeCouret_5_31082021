@@ -62,6 +62,10 @@ h2{
   background: none;
 }
 
+.search-text2 {
+  display: block;
+}
+
 #tag-area {
   margin-top: 25px;
   margin-bottom: 15px;
@@ -246,4 +250,8 @@ h2{
     // text-overflow: ellipsis;
     // white-space: nowrap;
   }
+}
+
+.fa-chevron-up {
+  display: none;
 }

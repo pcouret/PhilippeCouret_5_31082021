@@ -28,6 +28,7 @@ for (let i = 0; i < recipes.length; i++) {
                     </p>
                   </div>
                 </div>
+                
               </div>
             </li>`
 
@@ -236,22 +237,22 @@ function showustensilefilter(){
     }
 }
 
-// let inputfilterIngredient = document.getElementById("search-ingredient")
-//let inputfilterIngredient = document.getElementById("search-appareil")
-//let inputfilterIngredient = document.getElementById("search-ustensile")
+let inputfilterIngredient = document.getElementById("search-ingredient")
+// let inputfilterIngredient = document.getElementById("search-appareil")
+// let inputfilterIngredient = document.getElementById("search-ustensile")
 
-// inputfilterIngredient.addEventListener("input", (event) => {
-//     const list = document.querySelectorAll("#ingredient-list" + "> .ingredient")
-//     let normalizeInputSearch = Utils.normString(event.target.value.trim())
-//     let regEx = new RegExp("(" + normalizeInputSearch + ")", 'gi')
-//     list.forEach((element) => {
-//         if (Utils.normString(element.innerText).match(regEx) || event.target.value === ""){
-//             element.style.display = 'list-item'
-//         } else {
-//             element.style.display = 'none'
-//         }
-//     })
-// })
+inputfilterIngredient.addEventListener("input", (event) => {
+    const list = document.querySelectorAll("#ingredient-list" + "> .ingredient")
+    let normalizeInputSearch = Utils.normString(event.target.value.trim())
+    let regEx = new RegExp("(" + normalizeInputSearch + ")", 'gi')
+    list.forEach((element) => {
+        if (Utils.normString(element.innerText).match(regEx) || event.target.value === ""){
+            element.style.display = 'list-item'
+        } else {
+            element.style.display = 'none'
+        }
+    })
+})
 
 // function seachFilterElement(event) {
 //     const list = document.querySelectorAll("#" + event.target.id + "> .filter")
