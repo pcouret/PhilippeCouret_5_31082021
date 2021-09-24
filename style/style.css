@@ -75,6 +75,8 @@ h2 {
   border-style: none;
   width: 100px;
   background: unset;
+  text-align: center;
+  line-height: 60px;
 }
 
 #tag-area {
@@ -150,8 +152,15 @@ h2 {
 #ingredient-list {
   background: #3282f7;
   color: #ffffff;
-  width: 500px;
-  height: 500px;
+  width: 667px;
+  height: 397px;
+  border-radius: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  list-style-type: none;
 }
 
 #appliance-list {
