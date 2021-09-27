@@ -28,7 +28,7 @@ for (let i = 0; i < recipes.length; i++) {
                     </p>
                   </div>
                 </div>
-                
+
               </div>
             </li>`
 
@@ -195,13 +195,15 @@ function isHidden(el) {
 
 function showingredientfilter(){
     if (isHidden(document.getElementById("ingredient-list"))){
-        document.getElementById("ingredient-list").style.display = "block"
+        document.getElementById("ingredient-list").style.display = "grid"
+        document.querySelector(".btn-ingredients").style.width = "707px"
         document.getElementById("appliance-list").style.display = "none"
         document.getElementById("ustensile-list").style.display = "none"
         document.getElementById("chevronhautingr").style.display = "block";
         document.getElementById("chevronbasingr").style.display = "none";
     } else {
         document.getElementById("ingredient-list").style.display = "none"
+        document.querySelector(".btn-ingredients").style.width = "auto"
         document.getElementById("chevronhautingr").style.display = "none";
         document.getElementById("chevronbasingr").style.display = "block";
     }
