@@ -178,7 +178,7 @@ h2 {
 
 #appliance-list {
   position: absolute;
-  margin-top: 5px;
+  margin-top: -5px;
   background: #68d9a4;
   color: #ffffff;
   width: 667px;
@@ -194,15 +194,28 @@ h2 {
 }
 
 #appliance-list li:hover {
-  background-color: #68d9a4;
+  background-color: #91e3bd;
 }
 
 #ustensile-list {
+  position: absolute;
+  margin-top: -5px;
   background: #ed6454;
   color: #ffffff;
-  width: 500px;
-  height: 500px;
-  list-style: none;
+  width: 667px;
+  border-radius: 5px;
+  display: none;
+  -ms-grid-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+  list-style-type: none;
+}
+
+#ustensile-list li {
+  padding: 10px;
+}
+
+#ustensile-list li:hover {
+  background-color: #f28e82;
 }
 
 #ingredients-search {

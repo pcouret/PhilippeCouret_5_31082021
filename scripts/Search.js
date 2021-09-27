@@ -213,13 +213,15 @@ function showingredientfilter(){
 
 function showappareilfilter(){
     if (isHidden(document.getElementById("appliance-list"))){
-        document.getElementById("appliance-list").style.display = "block"
+        document.getElementById("appliance-list").style.display = "grid"
+        document.querySelector(".btn-appliances").style.width = "707px"
         document.getElementById("ingredient-list").style.display = "none"
         document.getElementById("ustensile-list").style.display = "none"
         document.getElementById("chevronhautapp").style.display = "block";
         document.getElementById("chevronbasapp").style.display = "none";
     } else {
         document.getElementById("appliance-list").style.display = "none"
+        document.querySelector(".btn-appliances").style.width = "auto"
         document.getElementById("chevronhautapp").style.display = "none";
         document.getElementById("chevronbasapp").style.display = "block";
     }
@@ -227,13 +229,15 @@ function showappareilfilter(){
 
 function showustensilefilter(){
     if (isHidden(document.getElementById("ustensile-list"))){
-        document.getElementById("ustensile-list").style.display = "block"
+        document.getElementById("ustensile-list").style.display = "grid"
+        document.querySelector(".btn-ustensiles").style.width = "707px"
         document.getElementById("ingredient-list").style.display = "none"
         document.getElementById("appliance-list").style.display = "none"
         document.getElementById("chevronhautust").style.display = "block";
         document.getElementById("chevronbasust").style.display = "none";
     } else {
         document.getElementById("ustensile-list").style.display = "none"
+        document.querySelector(".btn-ustensiles").style.width = "auto"
         document.getElementById("chevronhautust").style.display = "none";
         document.getElementById("chevronbasust").style.display = "block";
     }

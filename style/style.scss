@@ -180,7 +180,7 @@ h2{
   & li{
     padding: 10px;
     &:hover {
-      background-color: lighten($color: #68d9a4, 10);
+      background-color: lighten(#68d9a4, 10);
     }
   }
 }
@@ -199,7 +199,7 @@ h2{
   & li{
     padding: 10px;
     &:hover {
-      background-color: lighten($color: #ed6454, 10);
+      background-color: lighten(#ed6454, 10);
     }
   }
 }
