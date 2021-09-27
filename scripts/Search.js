@@ -277,32 +277,32 @@ inputfilterIngredient.addEventListener("input", (event) => {
 
 // document.getElementById("search-ingredient").addEventListener("input" , seachFilterElement())
 
-// let inputfilterAppareils = document.getElementById("search-appareil")
+let inputfilterAppareils = document.getElementById("search-apliance")
 
-// inputfilterAppareils.addEventListener("input", (event) => {
-//     const list = document.querySelectorAll("#appareil-list" + "> .appareil")
-//     let normalizeInputSearch = Utils.normString(event.target.value.trim())
-//     let regEx = new RegExp("(" + normalizeInputSearch + ")", 'gi')
-//     list.forEach((element) => {
-//         if (Utils.normString(element.innerText).match(regEx) || event.target.value === ""){
-//             element.style.display = 'list-item'
-//         } else {
-//             element.style.display = 'none'
-//         }
-//     })
-// })
+inputfilterAppareils.addEventListener("input", (event) => {
+    const list = document.querySelectorAll("#apliance-list" + "> .apliance")
+    let normalizeInputSearch = Utils.normString(event.target.value.trim())
+    let regEx = new RegExp("(" + normalizeInputSearch + ")", 'gi')
+    list.forEach((element) => {
+        if (Utils.normString(element.innerText).match(regEx) || event.target.value === ""){
+            element.style.display = 'list-item'
+        } else {
+            element.style.display = 'none'
+        }
+    })
+})
 
-// let inputfilterUstensiles = document.getElementById("search-ustensile")
+let inputfilterUstensiles = document.getElementById("search-ustensile")
 
-// inputfilterUstensiles.addEventListener("input", (event) => {
-//     const list = document.querySelectorAll("#ustensile-list" + "> .ustensile")
-//     let normalizeInputSearch = Utils.normString(event.target.value.trim())
-//     let regEx = new RegExp("(" + normalizeInputSearch + ")", 'gi')
-//     list.forEach((element) => {
-//         if (Utils.normString(element.innerText).match(regEx) || event.target.value === ""){
-//             element.style.display = 'list-item'
-//         } else {
-//             element.style.display = 'none'
-//         }
-//     })
-// })
+inputfilterUstensiles.addEventListener("input", (event) => {
+    const list = document.querySelectorAll("#ustensile-list" + "> .ustensile")
+    let normalizeInputSearch = Utils.normString(event.target.value.trim())
+    let regEx = new RegExp("(" + normalizeInputSearch + ")", 'gi')
+    list.forEach((element) => {
+        if (Utils.normString(element.innerText).match(regEx) || event.target.value === ""){
+            element.style.display = 'list-item'
+        } else {
+            element.style.display = 'none'
+        }
+    })
+})
