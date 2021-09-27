@@ -168,7 +168,7 @@ h2{
 
 #appliance-list {
   position: absolute;
-  margin-top: 5px;
+  margin-top: -5px;
   background: #68d9a4;
   color: #ffffff;
   width: 667px;
@@ -187,11 +187,12 @@ h2{
 
 #ustensile-list {
   position: absolute;
-  margin-top: 5px;
+  margin-top: -5px;
   background: #ed6454;
   color: #ffffff;
   width: 667px;
   //height: 500px;
+  border-radius: 5px;
   display: none;
   grid-template-columns: 1fr 1fr 1fr;
   list-style-type: none;
