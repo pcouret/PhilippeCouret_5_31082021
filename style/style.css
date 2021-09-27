@@ -176,7 +176,7 @@ h2 {
   background-color: #63a0f9;
 }
 
-#appliance-list {
+#apliance-list {
   position: absolute;
   margin-top: -5px;
   background: #68d9a4;
@@ -189,11 +189,11 @@ h2 {
   list-style-type: none;
 }
 
-#appliance-list li {
+#apliance-list li {
   padding: 10px;
 }
 
-#appliance-list li:hover {
+#apliance-list li:hover {
   background-color: #91e3bd;
 }
 
@@ -232,7 +232,7 @@ h2 {
   margin-right: 20px;
 }
 
-.btn-appliance {
+.btn-apliance {
   background-color: #68d9a4;
 }
 

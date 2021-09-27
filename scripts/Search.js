@@ -1,4 +1,5 @@
 const container = document.getElementById("recipes-list");
+
 for (let i = 0; i < recipes.length; i++) {
     const card = `            <li id="${recipes[i].id}" class="recipe-block">
               <div class="recipe-block__img"></div>
@@ -69,7 +70,7 @@ function createFilterList(filterList, filterType) {
                                 ${oneFilterElement}
                               </li>`
         });
-    } else if (filterType === "appliance") {
+    } else if (filterType === "apliance") {
         filterLi += `   <li class=${filterType}>
                                 ${filterList}
                               </li>`
@@ -80,7 +81,7 @@ function createFilterList(filterList, filterType) {
 
 let ingredientsList = document.getElementById("ingredient-list")
 let ustensilsList = document.getElementById("ustensile-list")
-let apliancesList = document.getElementById("appliance-list")
+let apliancesList = document.getElementById("apliance-list")
 let ingredientsListDom = ""
 let ustensilsListDom = ""
 let apliancesListDom = ""
@@ -89,7 +90,7 @@ let apliancesListDom = ""
 recipes.forEach(oneRecipe => {
     ingredientsListDom += createFilterList(oneRecipe.ingredients, "ingredient")
     ustensilsListDom += createFilterList(oneRecipe.ustensils, "ustensil")
-    apliancesListDom += createFilterList(oneRecipe.appliance, "appliance")
+    apliancesListDom += createFilterList(oneRecipe.apliance, "apliance")
 });
 ingredientsList.innerHTML = ingredientsListDom
 ustensilsList.innerHTML = ustensilsListDom
@@ -134,6 +135,7 @@ function getAllIngr() {
 //     let tabApp = [];
 //     appareilsSearchList.forEach(_recipe => {
 //         recette.appareils.forEach(appareil => {
+    
 //             const index = tabApp.findIndex(i => Utils.normScripture(i)=== Utils.normScripture(ingredient.ingredient))
 //             if (index === -1){
 //                 tabApp.push(appareil.appareil)
@@ -150,8 +152,8 @@ function getAllIngr() {
 function getAllAppl() {
     let tabAllAppl = [];
     recipes.forEach(recette => {
-        if (!tabAllAppl.find(i=>Utils.normString(i)===Utils.normString(recette.appliance))){
-            tabAllAppl.push(recette.appliance.toLowerCase());
+        if (!tabAllAppl.find(i=>Utils.normString(i)===Utils.normString(recette.apliance))){
+            tabAllAppl.push(recette.apliance.toLowerCase());
        }
     })
     tabAllAppl.sort();
@@ -196,14 +198,14 @@ function isHidden(el) {
 function showingredientfilter(){
     if (isHidden(document.getElementById("ingredient-list"))){
         document.getElementById("ingredient-list").style.display = "grid"
-        document.querySelector(".btn-ingredients").style.width = "707px"
-        document.getElementById("appliance-list").style.display = "none"
+        document.querySelector(".btn-ingredient").style.width = "707px"
+        document.getElementById("apliance-list").style.display = "none"
         document.getElementById("ustensile-list").style.display = "none"
         document.getElementById("chevronhautingr").style.display = "block";
         document.getElementById("chevronbasingr").style.display = "none";
     } else {
         document.getElementById("ingredient-list").style.display = "none"
-        document.querySelector(".btn-ingredients").style.width = "auto"
+        document.querySelector(".btn-ingredient").style.width = "auto"
         document.getElementById("chevronhautingr").style.display = "none";
         document.getElementById("chevronbasingr").style.display = "block";
     }
@@ -212,16 +214,16 @@ function showingredientfilter(){
 }
 
 function showappareilfilter(){
-    if (isHidden(document.getElementById("appliance-list"))){
-        document.getElementById("appliance-list").style.display = "grid"
-        document.querySelector(".btn-appliances").style.width = "707px"
+    if (isHidden(document.getElementById("apliance-list"))){
+        document.getElementById("apliance-list").style.display = "grid"
+        document.querySelector(".btn-apliance").style.width = "707px"
         document.getElementById("ingredient-list").style.display = "none"
         document.getElementById("ustensile-list").style.display = "none"
         document.getElementById("chevronhautapp").style.display = "block";
         document.getElementById("chevronbasapp").style.display = "none";
     } else {
-        document.getElementById("appliance-list").style.display = "none"
-        document.querySelector(".btn-appliances").style.width = "auto"
+        document.getElementById("apliance-list").style.display = "none"
+        document.querySelector(".btn-apliance").style.width = "auto"
         document.getElementById("chevronhautapp").style.display = "none";
         document.getElementById("chevronbasapp").style.display = "block";
     }
@@ -230,14 +232,14 @@ function showappareilfilter(){
 function showustensilefilter(){
     if (isHidden(document.getElementById("ustensile-list"))){
         document.getElementById("ustensile-list").style.display = "grid"
-        document.querySelector(".btn-ustensiles").style.width = "707px"
+        document.querySelector(".btn-ustensile").style.width = "707px"
         document.getElementById("ingredient-list").style.display = "none"
-        document.getElementById("appliance-list").style.display = "none"
+        document.getElementById("apliance-list").style.display = "none"
         document.getElementById("chevronhautust").style.display = "block";
         document.getElementById("chevronbasust").style.display = "none";
     } else {
-        document.getElementById("ustensile-list").style.display = "none"
-        document.querySelector(".btn-ustensiles").style.width = "auto"
+        document.getElementById("ustensile-list").style.display = "none";
+        document.querySelector(".btn-ustensile").style.width = "auto";
         document.getElementById("chevronhautust").style.display = "none";
         document.getElementById("chevronbasust").style.display = "block";
     }
