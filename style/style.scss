@@ -167,19 +167,40 @@ h2{
 }
 
 #appliance-list {
+  position: absolute;
+  margin-top: 5px;
   background: #68d9a4;
   color: #ffffff;
-  width: 500px;
-  height: 500px;
-  list-style: none;
+  width: 667px;
+  //height: 500px;
+  border-radius: 5px;
+  display: none;
+  grid-template-columns: 1fr 1fr 1fr;
+  list-style-type: none;
+  & li{
+    padding: 10px;
+    &:hover {
+      background-color: lighten($color: #68d9a4, 10);
+    }
+  }
 }
 
 #ustensile-list {
+  position: absolute;
+  margin-top: 5px;
   background: #ed6454;
   color: #ffffff;
-  width: 500px;
-  height: 500px;
-  list-style: none;
+  width: 667px;
+  //height: 500px;
+  display: none;
+  grid-template-columns: 1fr 1fr 1fr;
+  list-style-type: none;
+  & li{
+    padding: 10px;
+    &:hover {
+      background-color: lighten($color: #ed6454, 10);
+    }
+  }
 }
 
 // .btn-filter img {
