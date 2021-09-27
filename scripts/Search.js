@@ -305,4 +305,5 @@ inputfilterUstensiles.addEventListener("input", (event) => {
             element.style.display = 'none'
         }
     })
+
 })
