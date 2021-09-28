@@ -42,7 +42,7 @@ let tabSelectIngr = [];
 let tabAppareils = getAllAppl();
 let tabSelectAppl = [];
 
-let tabUstensiles = getAllUst();
+let tabUstensils = getAllUst();
 let tabSelectUst = [];
 
 function getIngredients(ingredientsList) {
@@ -64,7 +64,7 @@ function createFilterList(filterList, filterType) {
                                 ${oneFilterElement[filterType]}
                               </li>`
         });
-    } else if (filterType === "ustensil") {
+    } else if (filterType === "ustensils") {
         filterList.forEach(oneFilterElement => {
             filterLi += `   <li class=${filterType}>
                                 ${oneFilterElement}
@@ -78,20 +78,25 @@ function createFilterList(filterList, filterType) {
     }
     return filterLi;
 }
+/* Rechercher l'element dans le DOM */
 
 let ingredientsList = document.getElementById("ingredient-list")
-let ustensilsList = document.getElementById("ustensile-list")
+let ustensilsList = document.getElementById("ustensils-list")
 let apliancesList = document.getElementById("apliance-list")
 let ingredientsListDom = ""
 let ustensilsListDom = ""
 let apliancesListDom = ""
 
+// creation des filtres
 
 recipes.forEach(oneRecipe => {
     ingredientsListDom += createFilterList(oneRecipe.ingredients, "ingredient")
-    ustensilsListDom += createFilterList(oneRecipe.ustensils, "ustensil")
+    ustensilsListDom += createFilterList(oneRecipe.ustensils, "ustensils")
     apliancesListDom += createFilterList(oneRecipe.apliance, "apliance")
 });
+
+/* mise à jour du DOM */
+
 ingredientsList.innerHTML = ingredientsListDom
 ustensilsList.innerHTML = ustensilsListDom
 apliancesList.innerHTML = apliancesListDom
@@ -165,8 +170,8 @@ function getAllAppl() {
 function getAllUst() {
     let tabAllUst = [];
     recipes.forEach(recette => {
-        recette.ustensils.forEach(currentUstensile => {
-            let ust = currentUstensile;
+        recette.ustensils.forEach(currentUstensils => {
+            let ust = currentUstensils;
             if (!tabAllUst.find(i=>Utils.normString(i)===Utils.normString(ust))){
                 tabAllUst.push(ust.toLowerCase());
             }
@@ -195,17 +200,18 @@ function isHidden(el) {
     return (el.offsetParent === null)
 }
 
+
 function showingredientfilter(){
     if (isHidden(document.getElementById("ingredient-list"))){
         document.getElementById("ingredient-list").style.display = "grid"
-        document.querySelector(".btn-ingredient").style.width = "707px"
+        document.querySelector(".btn-ingredients").style.width = "707px"
         document.getElementById("apliance-list").style.display = "none"
-        document.getElementById("ustensile-list").style.display = "none"
+        document.getElementById("ustensils-list").style.display = "none"
         document.getElementById("chevronhautingr").style.display = "block";
         document.getElementById("chevronbasingr").style.display = "none";
     } else {
         document.getElementById("ingredient-list").style.display = "none"
-        document.querySelector(".btn-ingredient").style.width = "auto"
+        document.querySelector(".btn-ingredients").style.width = "auto"
         document.getElementById("chevronhautingr").style.display = "none";
         document.getElementById("chevronbasingr").style.display = "block";
     }
@@ -218,7 +224,7 @@ function showappareilfilter(){
         document.getElementById("apliance-list").style.display = "grid"
         document.querySelector(".btn-apliance").style.width = "707px"
         document.getElementById("ingredient-list").style.display = "none"
-        document.getElementById("ustensile-list").style.display = "none"
+        document.getElementById("ustensils-list").style.display = "none"
         document.getElementById("chevronhautapp").style.display = "block";
         document.getElementById("chevronbasapp").style.display = "none";
     } else {
@@ -229,17 +235,17 @@ function showappareilfilter(){
     }
 }
 
-function showustensilefilter(){
-    if (isHidden(document.getElementById("ustensile-list"))){
-        document.getElementById("ustensile-list").style.display = "grid"
-        document.querySelector(".btn-ustensile").style.width = "707px"
+function showustensilsfilter(){
+    if (isHidden(document.getElementById("ustensils-list"))){
+        document.getElementById("ustensils-list").style.display = "grid"
+        document.querySelector(".btn-ustensils").style.width = "707px"
         document.getElementById("ingredient-list").style.display = "none"
         document.getElementById("apliance-list").style.display = "none"
         document.getElementById("chevronhautust").style.display = "block";
         document.getElementById("chevronbasust").style.display = "none";
     } else {
-        document.getElementById("ustensile-list").style.display = "none";
-        document.querySelector(".btn-ustensile").style.width = "auto";
+        document.getElementById("ustensils-list").style.display = "none";
+        document.querySelector(".btn-ustensils").style.width = "auto";
         document.getElementById("chevronhautust").style.display = "none";
         document.getElementById("chevronbasust").style.display = "block";
     }
@@ -247,7 +253,7 @@ function showustensilefilter(){
 
 let inputfilterIngredient = document.getElementById("search-ingredient")
 // let inputfilterIngredient = document.getElementById("search-appareil")
-// let inputfilterIngredient = document.getElementById("search-ustensile")
+// let inputfilterIngredient = document.getElementById("search-ustensils")
 
 inputfilterIngredient.addEventListener("input", (event) => {
     const list = document.querySelectorAll("#ingredient-list" + "> .ingredient")
@@ -292,10 +298,10 @@ inputfilterAppareils.addEventListener("input", (event) => {
     })
 })
 
-let inputfilterUstensiles = document.getElementById("search-ustensile")
+let inputfilterUstensils = document.getElementById("search-ustensils")
 
-inputfilterUstensiles.addEventListener("input", (event) => {
-    const list = document.querySelectorAll("#ustensile-list" + "> .ustensile")
+inputfilterUstensils.addEventListener("input", (event) => {
+    const list = document.querySelectorAll("#ustensils-list" + "> .ustensils")
     let normalizeInputSearch = Utils.normString(event.target.value.trim())
     let regEx = new RegExp("(" + normalizeInputSearch + ")", 'gi')
     list.forEach((element) => {
