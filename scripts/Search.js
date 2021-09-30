@@ -56,26 +56,36 @@ function getIngredients(ingredientsList) {
 }
 
 
+// function createFilterList(filterList, filterType) {
+//     let filterLi = ""
+//     if (filterType === "ingredient") {
+//         filterList.forEach(oneFilterElement => {
+//             filterLi += `   <li class=${filterType}>
+//                                 ${oneFilterElement[filterType]}
+//                               </li>`
+//         });
+//     } else if (filterType === "ustensils") {
+//         filterList.forEach(oneFilterElement => {
+//             filterLi += `   <li class=${filterType}>
+//                                 ${oneFilterElement}
+//                               </li>`
+//         });
+//     } else if (filterType === "apliance") {
+//         filterLi += `   <li class=${filterType}>
+//                                 ${filterList}
+//                               </li>`
+
+//     }
+//     return filterLi;
+// }
+
 function createFilterList(filterList, filterType) {
     let filterLi = ""
-    if (filterType === "ingredient") {
-        filterList.forEach(oneFilterElement => {
-            filterLi += `   <li class=${filterType}>
-                                ${oneFilterElement[filterType]}
-                              </li>`
-        });
-    } else if (filterType === "ustensils") {
         filterList.forEach(oneFilterElement => {
             filterLi += `   <li class=${filterType}>
                                 ${oneFilterElement}
                               </li>`
         });
-    } else if (filterType === "apliance") {
-        filterLi += `   <li class=${filterType}>
-                                ${filterList}
-                              </li>`
-
-    }
     return filterLi;
 }
 /* Rechercher l'element dans le DOM */
@@ -89,20 +99,59 @@ let apliancesListDom = ""
 
 // creation des filtres
 
+// recipes.forEach(oneRecipe => {
+//     ingredientsListDom += createFilterList(oneRecipe.ingredients, "ingredient")
+//     ustensilsListDom += createFilterList(oneRecipe.ustensils, "ustensils")
+//     apliancesListDom += createFilterList(oneRecipe.apliance, "apliance")
+// });
+
+// creation des filtres
+let allIngredients = []
+let allUstensils = []
+let allApliances = []
+
 recipes.forEach(oneRecipe => {
-    ingredientsListDom += createFilterList(oneRecipe.ingredients, "ingredient")
-    ustensilsListDom += createFilterList(oneRecipe.ustensils, "ustensils")
-    apliancesListDom += createFilterList(oneRecipe.apliance, "apliance")
+        oneRecipe.ingredients.forEach(oneIngredient =>{
+            if (allIngredients.includes(oneIngredient.ingredient) === false){
+                allIngredients.push(oneIngredient.ingredient)
+            }
+        })
+        oneRecipe.ustensils.forEach(oneUstensils =>{
+            if (allUstensils.includes(oneUstensils) === false){
+                allUstensils.push(oneUstensils)
+            }
+        } )
+        if (allApliances.includes(oneRecipe.apliance) === false){
+            allApliances.push(oneRecipe.apliance)
+        }
 });
+
 
 /* mise à jour du DOM */
 
-ingredientsList.innerHTML = ingredientsListDom
-ustensilsList.innerHTML = ustensilsListDom
-apliancesList.innerHTML = apliancesListDom
+// ingredientsList.innerHTML = ingredientsListDom
+// ustensilsList.innerHTML = ustensilsListDom
+// apliancesList.innerHTML = apliancesListDom
 
+ingredientsList.innerHTML = createFilterList(allIngredients,"ingredient")
+ustensilsList.innerHTML = createFilterList(allUstensils, "ustensils")
+apliancesList.innerHTML = createFilterList(allApliances, "apliance")
 
+// recupèrer l'élément filtre sélectionné par l'utilisateur
+let tagArea = document.getElementById("tag-area")
+let newTag =""
+document.getElementById("ingredient-list").addEventListener("click", function (element){
 
+    if (element.target.nodeName ==="LI"){
+        let tagName = element.target.innerText
+        newTag =  `<p class="tag">${tagName}<img
+        src="img/croix.svg"
+        alt="icone cercle avec croix"
+        class="icon tag__icon"
+      /></p>`
+    }
+    tagArea.innerHTML += newTag
+})
 
 
 function searchIngredients(ingredientsSearchList) {
