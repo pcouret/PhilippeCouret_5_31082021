@@ -50,6 +50,7 @@ h2{
   // color: #000000;
   background-color: #e7e7e7;
   padding: 0 15px 0 15px;
+  margin-bottom: 30px;
 }
 
 .search-text {
@@ -77,13 +78,44 @@ h2{
 #tag-area {
   margin-top: 25px;
   margin-bottom: 15px;
+  display: inline-block;
 }
 
+.tagvuingr {
+  display: inline-block;
+  padding: 0.7rem 1.25rem;
+  border-radius: 5px;
+  margin: auto 5px 5px 0;
+  color: #ffffff;
+  background: #3282f7;
+}
+
+.tagvuapl {
+  display: inline-block;
+  padding: 0.7rem 1.25rem;
+  border-radius: 5px;
+  margin: auto 5px 5px 0;
+  color: #ffffff;
+  background: #68d9a4;
+}
+
+.tagvuust {
+  display: inline-block;
+  padding: 0.7rem 1.25rem;
+  border-radius: 5px;
+  margin: auto 5px 5px 0;
+  color: #ffffff;
+  background: #ed6454;
+}
+
+
 .tag {
-  width: 50px;
+  width: max-content;
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  margin-left: auto;
+  margin-right: auto;
   // min-height: 30px;
   background: #3282f7;
   font-size: 14px;
@@ -105,7 +137,7 @@ h2{
 }
 #filter-area {
   display: flex;
-  flex-wrap: wrap;
+  // flex-wrap: wrap;
   // justify-content: start;
 }
 
@@ -230,6 +262,7 @@ h2{
 
 .icon{
   margin-left: 20px;
+  con
 }
 
 #recipes-list {

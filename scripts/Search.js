@@ -138,13 +138,15 @@ ustensilsList.innerHTML = createFilterList(allUstensils, "ustensils")
 apliancesList.innerHTML = createFilterList(allApliances, "apliance")
 
 // recupèrer l'élément filtre sélectionné par l'utilisateur
+
 let tagArea = document.getElementById("tag-area")
 let newTag =""
+
 document.getElementById("ingredient-list").addEventListener("click", function (element){
 
     if (element.target.nodeName ==="LI"){
         let tagName = element.target.innerText
-        newTag =  `<p class="tag">${tagName}<img
+        newTag =  `<p class="tagvuingr">${tagName}<img
         src="img/croix.svg"
         alt="icone cercle avec croix"
         class="icon tag__icon"
@@ -153,6 +155,31 @@ document.getElementById("ingredient-list").addEventListener("click", function (e
     tagArea.innerHTML += newTag
 })
 
+document.getElementById("ustensils-list").addEventListener("click", function (element){
+
+    if (element.target.nodeName ==="LI"){
+        let tagName = element.target.innerText
+        newTag =  `<p class="tagvuust">${tagName}<img
+        src="img/croix.svg"
+        alt="icone cercle avec croix"
+        class="icon tag__icon"
+      /></p>`
+    }
+    tagArea.innerHTML += newTag
+})
+
+document.getElementById("apliance-list").addEventListener("click", function (element){
+
+    if (element.target.nodeName ==="LI"){
+        let tagName = element.target.innerText
+        newTag =  `<p class="tagvuapl">${tagName}<img
+        src="img/croix.svg"
+        alt="icone cercle avec croix"
+        class="icon tag__icon"
+      /></p>`
+    }
+    tagArea.innerHTML += newTag
+})
 
 function searchIngredients(ingredientsSearchList) {
     let tabIngr = [];
