@@ -56,6 +56,7 @@ function getIngredients(ingredientsList) {
 }
 
 
+
 // function createFilterList(filterList, filterType) {
 //     let filterLi = ""
 //     if (filterType === "ingredient") {
@@ -106,6 +107,8 @@ let apliancesListDom = ""
 // });
 
 // creation des filtres
+
+
 let allIngredients = []
 let allUstensils = []
 let allApliances = []
@@ -146,20 +149,27 @@ document.getElementById("ingredient-list").addEventListener("click", function (e
 
     if (element.target.nodeName ==="LI"){
         let tagName = element.target.innerText
-        newTag =  `<p class="tagvuingr">${tagName}<img
+        newTag =  `<p class="tagvuingr "onclick = "removeTag(this)">${tagName}<img
+
         src="img/croix.svg"
         alt="icone cercle avec croix"
+        
         class="icon tag__icon"
       /></p>`
     }
     tagArea.innerHTML += newTag
 })
+
+
+function removeTag(el) {
+    el.style.display = "none"
+}
 
 document.getElementById("ustensils-list").addEventListener("click", function (element){
 
     if (element.target.nodeName ==="LI"){
         let tagName = element.target.innerText
-        newTag =  `<p class="tagvuust">${tagName}<img
+        newTag =  `<p class="tagvuust"onclick = "removeTag(this)">${tagName}<img
         src="img/croix.svg"
         alt="icone cercle avec croix"
         class="icon tag__icon"
@@ -168,11 +178,13 @@ document.getElementById("ustensils-list").addEventListener("click", function (el
     tagArea.innerHTML += newTag
 })
 
+
+
 document.getElementById("apliance-list").addEventListener("click", function (element){
 
     if (element.target.nodeName ==="LI"){
         let tagName = element.target.innerText
-        newTag =  `<p class="tagvuapl">${tagName}<img
+        newTag =  `<p class="tagvuapl"onclick = "removeTag(this)">${tagName}<img
         src="img/croix.svg"
         alt="icone cercle avec croix"
         class="icon tag__icon"
@@ -389,3 +401,5 @@ inputfilterUstensils.addEventListener("input", (event) => {
     })
 
 })
+
+
