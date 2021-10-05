@@ -112,6 +112,9 @@ let apliancesListDom = ""
 let allIngredients = []
 let allUstensils = []
 let allApliances = []
+let tagArray = []
+
+
 
 recipes.forEach(oneRecipe => {
         oneRecipe.ingredients.forEach(oneIngredient =>{
@@ -127,7 +130,10 @@ recipes.forEach(oneRecipe => {
         if (allApliances.includes(oneRecipe.apliance) === false){
             allApliances.push(oneRecipe.apliance)
         }
-});
+})
+
+
+
 
 
 /* mise à jour du DOM */
@@ -149,6 +155,10 @@ document.getElementById("ingredient-list").addEventListener("click", function (e
 
     if (element.target.nodeName ==="LI"){
         let tagName = element.target.innerText
+        tagArray.push({
+            type:"ingredient",
+            value:tagName
+        })
         newTag =  `<p class="tagvuingr "onclick = "removeTag(this)">${tagName}<img
 
         src="img/croix.svg"
@@ -158,17 +168,31 @@ document.getElementById("ingredient-list").addEventListener("click", function (e
       /></p>`
     }
     tagArea.innerHTML += newTag
+    filterRecipes()
 })
 
 
 function removeTag(el) {
     el.style.display = "none"
+    const tagName = el.innerText;
+    const index = tagArray.findIndex(tag=>{
+        return tag.value=== tagName
+    })
+    if (index !==-1){
+        tagArray.splice(index,1)
+    }
+    filterRecipes()
 }
 
 document.getElementById("ustensils-list").addEventListener("click", function (element){
 
     if (element.target.nodeName ==="LI"){
+
         let tagName = element.target.innerText
+        tagArray.push({
+            type:"ustensils",
+            value:tagName
+        })
         newTag =  `<p class="tagvuust"onclick = "removeTag(this)">${tagName}<img
         src="img/croix.svg"
         alt="icone cercle avec croix"
@@ -176,6 +200,7 @@ document.getElementById("ustensils-list").addEventListener("click", function (el
       /></p>`
     }
     tagArea.innerHTML += newTag
+    filterRecipes()
 })
 
 
@@ -184,6 +209,10 @@ document.getElementById("apliance-list").addEventListener("click", function (ele
 
     if (element.target.nodeName ==="LI"){
         let tagName = element.target.innerText
+        tagArray.push({
+            type:"apliance",
+            value:tagName
+        })
         newTag =  `<p class="tagvuapl"onclick = "removeTag(this)">${tagName}<img
         src="img/croix.svg"
         alt="icone cercle avec croix"
@@ -191,7 +220,11 @@ document.getElementById("apliance-list").addEventListener("click", function (ele
       /></p>`
     }
     tagArea.innerHTML += newTag
+    filterRecipes()
 })
+function filterRecipes() {
+    console.log(tagArray)
+}
 
 function searchIngredients(ingredientsSearchList) {
     let tabIngr = [];
@@ -400,6 +433,6 @@ inputfilterUstensils.addEventListener("input", (event) => {
         }
     })
 
-})
+}
 
-
+)
