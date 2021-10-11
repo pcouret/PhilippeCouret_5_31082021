@@ -1,12 +1,15 @@
-const container = document.getElementById("recipes-list");
 
-for (let i = 0; i < recipes.length; i++) {
-    const card = `            <li id="${recipes[i].id}" class="recipe-block">
+function showRecipes(recipesArray) {
+    const container = document.getElementById("recipes-list");
+    container.innerHTML = '';
+
+    for (let i = 0; i < recipesArray.length; i++) {
+        const card = `            <li id="${recipesArray[i].id}" class="recipe-block">
               <div class="recipe-block__img"></div>
               <div class="recipe">
                 <div class="recipe__titleTime">
                   <h2 class="recipe__titleTime__title name">
-                    ${recipes[i].name}
+                    ${recipesArray[i].name}
                   </h2>
                   <h2 class="recipe__titleTime__time">
                     <img
@@ -14,18 +17,18 @@ for (let i = 0; i < recipes.length; i++) {
                       alt="icone temps"
                       class="icon recipe__titleTime__time--icon"
                     />
-                    ${recipes[i].time} min
+                    ${recipesArray[i].time} min
                   </h2>
                 </div>
                 <div class="ingredients-description">
                   <div class="Ingredients">
                     <ul class="ingredients-list">
-                      ${getIngredients(recipes[i].ingredients)}
+                      ${getIngredients(recipesArray[i].ingredients)}
                     </ul>
                   </div>
                   <div class="description">
                     <p class="description__text">
-                      ${recipes[i].description.length < 70 ? recipes[i].description : recipes[i].description.substring(0, 70) + "..."}
+                      ${recipesArray[i].description.length < 70 ? recipesArray[i].description : recipesArray[i].description.substring(0, 70) + "..."}
                     </p>
                   </div>
                 </div>
@@ -33,8 +36,11 @@ for (let i = 0; i < recipes.length; i++) {
               </div>
             </li>`
 
-    container.innerHTML += card
+        container.innerHTML += card
+    }
 }
+
+showRecipes(recipes)
 
 let tabIngredients = getAllIngr();
 let tabSelectIngr = [];
@@ -82,11 +88,11 @@ function getIngredients(ingredientsList) {
 
 function createFilterList(filterList, filterType) {
     let filterLi = ""
-        filterList.forEach(oneFilterElement => {
-            filterLi += `   <li class=${filterType}>
+    filterList.forEach(oneFilterElement => {
+        filterLi += `   <li class=${filterType}>
                                 ${oneFilterElement}
                               </li>`
-        });
+    });
     return filterLi;
 }
 /* Rechercher l'element dans le DOM */
@@ -113,23 +119,26 @@ let allIngredients = []
 let allUstensils = []
 let allApliances = []
 let tagArray = []
+let filteredRecipes = []
+
+console.log(tagArray)
 
 
 
 recipes.forEach(oneRecipe => {
-        oneRecipe.ingredients.forEach(oneIngredient =>{
-            if (allIngredients.includes(oneIngredient.ingredient) === false){
-                allIngredients.push(oneIngredient.ingredient)
-            }
-        })
-        oneRecipe.ustensils.forEach(oneUstensils =>{
-            if (allUstensils.includes(oneUstensils) === false){
-                allUstensils.push(oneUstensils)
-            }
-        } )
-        if (allApliances.includes(oneRecipe.apliance) === false){
-            allApliances.push(oneRecipe.apliance)
+    oneRecipe.ingredients.forEach(oneIngredient => {
+        if (allIngredients.includes(oneIngredient.ingredient) === false) {
+            allIngredients.push(oneIngredient.ingredient)
         }
+    })
+    oneRecipe.ustensils.forEach(oneUstensils => {
+        if (allUstensils.includes(oneUstensils) === false) {
+            allUstensils.push(oneUstensils)
+        }
+    })
+    if (allApliances.includes(oneRecipe.apliance) === false) {
+        allApliances.push(oneRecipe.apliance)
+    }
 })
 
 
@@ -142,24 +151,24 @@ recipes.forEach(oneRecipe => {
 // ustensilsList.innerHTML = ustensilsListDom
 // apliancesList.innerHTML = apliancesListDom
 
-ingredientsList.innerHTML = createFilterList(allIngredients,"ingredient")
+ingredientsList.innerHTML = createFilterList(allIngredients, "ingredient")
 ustensilsList.innerHTML = createFilterList(allUstensils, "ustensils")
 apliancesList.innerHTML = createFilterList(allApliances, "apliance")
 
 // recupèrer l'élément filtre sélectionné par l'utilisateur
 
 let tagArea = document.getElementById("tag-area")
-let newTag =""
+let newTag = ""
 
-document.getElementById("ingredient-list").addEventListener("click", function (element){
+document.getElementById("ingredient-list").addEventListener("click", function (element) {
 
-    if (element.target.nodeName ==="LI"){
+    if (element.target.nodeName === "LI") {
         let tagName = element.target.innerText
         tagArray.push({
-            type:"ingredient",
-            value:tagName
+            type: "ingredient",
+            value: tagName
         })
-        newTag =  `<p class="tagvuingr "onclick = "removeTag(this)">${tagName}<img
+        newTag = `<p class="tagvuingr "onclick = "removeTag(this)">${tagName}<img
 
         src="img/croix.svg"
         alt="icone cercle avec croix"
@@ -175,25 +184,26 @@ document.getElementById("ingredient-list").addEventListener("click", function (e
 function removeTag(el) {
     el.style.display = "none"
     const tagName = el.innerText;
-    const index = tagArray.findIndex(tag=>{
-        return tag.value=== tagName
+    const index = tagArray.findIndex(tag => {
+        return tag.value === tagName
     })
-    if (index !==-1){
-        tagArray.splice(index,1)
+    if (index !== -1) {
+        tagArray.splice(index, 1)
     }
     filterRecipes()
 }
 
-document.getElementById("ustensils-list").addEventListener("click", function (element){
 
-    if (element.target.nodeName ==="LI"){
+document.getElementById("ustensils-list").addEventListener("click", function (element) {
+
+    if (element.target.nodeName === "LI") {
 
         let tagName = element.target.innerText
         tagArray.push({
-            type:"ustensils",
-            value:tagName
+            type: "ustensils",
+            value: tagName
         })
-        newTag =  `<p class="tagvuust"onclick = "removeTag(this)">${tagName}<img
+        newTag = `<p class="tagvuust"onclick = "removeTag(this)">${tagName}<img
         src="img/croix.svg"
         alt="icone cercle avec croix"
         class="icon tag__icon"
@@ -205,15 +215,15 @@ document.getElementById("ustensils-list").addEventListener("click", function (el
 
 
 
-document.getElementById("apliance-list").addEventListener("click", function (element){
+document.getElementById("apliance-list").addEventListener("click", function (element) {
 
-    if (element.target.nodeName ==="LI"){
+    if (element.target.nodeName === "LI") {
         let tagName = element.target.innerText
         tagArray.push({
-            type:"apliance",
-            value:tagName
+            type: "apliance",
+            value: tagName
         })
-        newTag =  `<p class="tagvuapl"onclick = "removeTag(this)">${tagName}<img
+        newTag = `<p class="tagvuapl"onclick = "removeTag(this)">${tagName}<img
         src="img/croix.svg"
         alt="icone cercle avec croix"
         class="icon tag__icon"
@@ -221,17 +231,44 @@ document.getElementById("apliance-list").addEventListener("click", function (ele
     }
     tagArea.innerHTML += newTag
     filterRecipes()
+    console.log(filterRecipes)
 })
+
 function filterRecipes() {
-    console.log(tagArray)
+    console.log(tagArray.length)
+    let resultRecipes = []
+    if (tagArray.length === 0) {
+        // on affiche toute les recettes
+        resultRecipes = [...recipes]
+    } else {
+        // on lance la recherche dans toutes les recettes
+        recipes.forEach(oneRecipes => {
+            const ingredients = oneRecipes.ingredients.map(i => i.ingredient.toLowerCase())
+            tagArray.forEach(tag => {
+                if (tag.type === "ingredient") {
+                    if (ingredients.includes(tag.value.toLowerCase())) {
+                        resultRecipes.push(oneRecipes)
+                    }
+                }
+
+            })
+
+
+        });
+        
+    }
+    showRecipes(resultRecipes)
+
+
 }
+
 
 function searchIngredients(ingredientsSearchList) {
     let tabIngr = [];
     ingredientsSearchList.forEach(recipes => {
         recipes.ingredients.forEach(ingredient => {
-            const index = tabIngr.findIndex(i => Utils.normScripture(i)=== Utils.normScripture(ingredient.ingredient))
-            if (index === -1){
+            const index = tabIngr.findIndex(i => Utils.normScripture(i) === Utils.normScripture(ingredient.ingredient))
+            if (index === -1) {
                 tabIngr.push(ingredient.ingredient)
             }
         })
@@ -248,7 +285,7 @@ function getAllIngr() {
     recipes.forEach(recette => {
         recette.ingredients.forEach(currentIngredient => {
             let ingr = currentIngredient.ingredient;
-            if (!tabAllIngr.find(i=>Utils.normString(i)===Utils.normString(ingr))){
+            if (!tabAllIngr.find(i => Utils.normString(i) === Utils.normString(ingr))) {
                 tabAllIngr.push(ingr.toLowerCase());
             }
         })
@@ -261,13 +298,13 @@ function getAllIngr() {
 //     let tabApp = [];
 //     appareilsSearchList.forEach(_recipe => {
 //         recette.appareils.forEach(appareil => {
-    
+
 //             const index = tabApp.findIndex(i => Utils.normScripture(i)=== Utils.normScripture(ingredient.ingredient))
 //             if (index === -1){
 //                 tabApp.push(appareil.appareil)
 //             }
 //         })
-        
+
 //     })
 //     console.log(tabApp)
 //     tabApp.sort();
@@ -278,9 +315,9 @@ function getAllIngr() {
 function getAllAppl() {
     let tabAllAppl = [];
     recipes.forEach(recette => {
-        if (!tabAllAppl.find(i=>Utils.normString(i)===Utils.normString(recette.apliance))){
+        if (!tabAllAppl.find(i => Utils.normString(i) === Utils.normString(recette.apliance))) {
             tabAllAppl.push(recette.apliance.toLowerCase());
-       }
+        }
     })
     tabAllAppl.sort();
     return tabAllAppl;
@@ -293,7 +330,7 @@ function getAllUst() {
     recipes.forEach(recette => {
         recette.ustensils.forEach(currentUstensils => {
             let ust = currentUstensils;
-            if (!tabAllUst.find(i=>Utils.normString(i)===Utils.normString(ust))){
+            if (!tabAllUst.find(i => Utils.normString(i) === Utils.normString(ust))) {
                 tabAllUst.push(ust.toLowerCase());
             }
         })
@@ -322,8 +359,8 @@ function isHidden(el) {
 }
 
 
-function showingredientfilter(){
-    if (isHidden(document.getElementById("ingredient-list"))){
+function showingredientfilter() {
+    if (isHidden(document.getElementById("ingredient-list"))) {
         document.getElementById("ingredient-list").style.display = "grid"
         document.querySelector(".btn-ingredients").style.width = "707px"
         document.getElementById("apliance-list").style.display = "none"
@@ -336,12 +373,12 @@ function showingredientfilter(){
         document.getElementById("chevronhautingr").style.display = "none";
         document.getElementById("chevronbasingr").style.display = "block";
     }
-    
+
 
 }
 
-function showappareilfilter(){
-    if (isHidden(document.getElementById("apliance-list"))){
+function showappareilfilter() {
+    if (isHidden(document.getElementById("apliance-list"))) {
         document.getElementById("apliance-list").style.display = "grid"
         document.querySelector(".btn-apliance").style.width = "707px"
         document.getElementById("ingredient-list").style.display = "none"
@@ -356,8 +393,8 @@ function showappareilfilter(){
     }
 }
 
-function showustensilsfilter(){
-    if (isHidden(document.getElementById("ustensils-list"))){
+function showustensilsfilter() {
+    if (isHidden(document.getElementById("ustensils-list"))) {
         document.getElementById("ustensils-list").style.display = "grid"
         document.querySelector(".btn-ustensils").style.width = "707px"
         document.getElementById("ingredient-list").style.display = "none"
@@ -381,7 +418,7 @@ inputfilterIngredient.addEventListener("input", (event) => {
     let normalizeInputSearch = Utils.normString(event.target.value.trim())
     let regEx = new RegExp("(" + normalizeInputSearch + ")", 'gi')
     list.forEach((element) => {
-        if (Utils.normString(element.innerText).match(regEx) || event.target.value === ""){
+        if (Utils.normString(element.innerText).match(regEx) || event.target.value === "") {
             element.style.display = 'list-item'
         } else {
             element.style.display = 'none'
@@ -411,7 +448,7 @@ inputfilterAppareils.addEventListener("input", (event) => {
     let normalizeInputSearch = Utils.normString(event.target.value.trim())
     let regEx = new RegExp("(" + normalizeInputSearch + ")", 'gi')
     list.forEach((element) => {
-        if (Utils.normString(element.innerText).match(regEx) || event.target.value === ""){
+        if (Utils.normString(element.innerText).match(regEx) || event.target.value === "") {
             element.style.display = 'list-item'
         } else {
             element.style.display = 'none'
@@ -426,7 +463,7 @@ inputfilterUstensils.addEventListener("input", (event) => {
     let normalizeInputSearch = Utils.normString(event.target.value.trim())
     let regEx = new RegExp("(" + normalizeInputSearch + ")", 'gi')
     list.forEach((element) => {
-        if (Utils.normString(element.innerText).match(regEx) || event.target.value === ""){
+        if (Utils.normString(element.innerText).match(regEx) || event.target.value === "") {
             element.style.display = 'list-item'
         } else {
             element.style.display = 'none'
@@ -434,5 +471,4 @@ inputfilterUstensils.addEventListener("input", (event) => {
     })
 
 }
-
 )
