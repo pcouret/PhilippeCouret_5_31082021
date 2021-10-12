@@ -244,23 +244,35 @@ function filterRecipes() {
         // on lance la recherche dans toutes les recettes
         recipes.forEach(oneRecipes => {
             const ingredients = oneRecipes.ingredients.map(i => i.ingredient.toLowerCase())
+            const ustensils = oneRecipes.ustensils.map(u=>u.toLowerCase())
             tagArray.forEach(tag => {
                 if (tag.type === "ingredient") {
                     if (ingredients.includes(tag.value.toLowerCase())) {
                         resultRecipes.push(oneRecipes)
                     }
+                } else if (tag.type==="ustensils") {
+                    if (ustensils.includes(tag.value.toLowerCase())) {
+                        resultRecipes.push(oneRecipes)
+                    }
                 }
-
             })
 
-
         });
-        
+
     }
+
     showRecipes(resultRecipes)
 
 
+
 }
+
+
+
+
+
+
+
 
 
 function searchIngredients(ingredientsSearchList) {
@@ -472,3 +484,4 @@ inputfilterUstensils.addEventListener("input", (event) => {
 
 }
 )
+
