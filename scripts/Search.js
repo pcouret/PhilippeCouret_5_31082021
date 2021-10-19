@@ -61,7 +61,9 @@ function getIngredients(ingredientsList) {
     return ingredientLi;
 }
 
-
+document.getElementById("search-element").addEventListener("input",(e)=> {
+    console.log(e.target.value)
+})
 
 // function createFilterList(filterList, filterType) {
 //     let filterLi = ""
