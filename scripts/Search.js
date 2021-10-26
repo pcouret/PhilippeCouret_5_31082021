@@ -62,8 +62,25 @@ function getIngredients(ingredientsList) {
 }
 
 document.getElementById("search-element").addEventListener("input",(e)=> {
-    console.log(e.target.value)
-})
+    
+    const enteredValue = e.target.value.toLowerCase();
+    if (enteredValue.length >=3){
+        const filterRecipes = recipes.filter((recipes) => {
+            return (
+                recipes.name.toLowerCase().includes(enteredValue) ||
+                recipes.ingredients.some(i => i.ingredient.toLowerCase().includes(enteredValue)) ||
+                recipes.ustensils.some(u => u.toLowerCase().includes(enteredValue)) ||
+                recipes.apliance.toLowerCase().includes(enteredValue)
+            )
+        })
+        
+        showRecipes(filterRecipes);
+
+    }else {
+        
+        showRecipes(recipes);
+    }
+});
 
 // function createFilterList(filterList, filterType) {
 //     let filterLi = ""
